@@ -1,0 +1,24 @@
+
+Used registers:
+
+	%d1-%d7
+	%a0-%a5
+
+Example:
+
+	#
+	# write() system call example
+	#
+
+	SYS_write	= 0x4
+	stdout		= 0x1
+
+	buffer:		.ascii "test\n"
+
+	move.l	#stdout,%d1
+	lea.l	buffer,%a0
+	move.l	#5,%d2
+
+	move.l	#SYS_write,%d0
+
+	trap	#0
